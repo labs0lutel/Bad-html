@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>музыка сайт</title>
+
+<!-- ОШИБКА: стили прямо в head через тег style, нет отдельного файла -->
+<!-- ОШИБКА: шрифт подключён через @import внутри style, не через link -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap');
+
+  /* ОШИБКА: сброс через * не сделан, margin/padding у body не убраны */
+
+  body {
+    /* ОШИБКА: светлый фон для "музыкального" сайта, плохой контраст */
+    background-color: #f0f0f0;
+    font-family: Arial;
+    /* ОШИБКА: жёсткая ширина на body вместо контейнера */
+    width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ОШИБКА: классы названы бессмысленно */
+  .block1 {
+    background: blue;
+    padding: 10px;
+  }
+
+  /* ОШИБКА: цвет текста и фона одинаково плохо читаются */
+  .block1 a {
+    color: white;
+    font-size: 9px;
+    margin-right: 30px;
+    text-decoration: none;
+  }
+
+  /* ОШИБКА: логотип стилизован как обычный текст с margin */
+  .logo-text {
+    font-size: 30px;
+    color: yellow;
+    font-weight: 900;
+    margin-right: 80px;
+  }
+
+  /* ОШИБКА: картинка-герой через img с жёсткими размерами px */
+  .big-img {
+    width: 900px;
+    height: 200px;
+    object-fit: none; /* ОШИБКА: изображение обрезается неправильно */
+  }
+
+  /* ОШИБКА: весь текст поверх картинки через margin-top отрицательный */
+  .hero-text {
+    margin-top: -80px;
+    margin-left: 20px;
+    font-size: 40px;
+    color: black; /* ОШИБКА: чёрный текст на тёмной картинке */
+    font-weight: bold;
+  }
+
+  /* ОШИБКА: кнопка сделана через <a> с border, без нормального padding */
+  .btn1 {
+    background: green;
+    color: white;
+    border: 3px solid red; /* ОШИБКА: рандомный border другого цвета */
+    font-size: 20px;
+    padding: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline;
+  }
+
+  /* ОШИБКА: секция с карточками через float вместо flex/grid */
+  .cards-section {
+    background: #cccccc;
+    padding: 5px;
+    overflow: hidden; /* ОШИБКА: clearfix через overflow */
+  }
+
+  /* ОШИБКА: заголовок секции не выделен визуально, теряется */
+  .cards-section h2 {
+    font-size: 12px;
+    color: #999;
+  }
+
+  /* ОШИБКА: карточки через float с жёсткой шириной px */
+  .card {
+    float: left;
+    width: 130px;
+    background: white;
+    margin: 3px;
+    /* ОШИБКА: разные отступы у разных карточек заданы инлайн */
+  }
+
+  .card img {
+    /* ОШИБКА: картинка в карточке обрезается, нет object-fit */
+    width: 130px;
+    height: 130px;
+  }
+
+  /* ОШИБКА: текст карточки никак не стилизован */
+  .card p {
+    font-size: 11px;
+    margin: 0;
+    padding: 2px;
+  }
+
+  /* ОШИБКА: секция релизов скопирована и переименована с нуля вместо переиспользования */
+  .releases {
+    background: #dddddd;
+    padding: 5px;
+    overflow: hidden;
+  }
+
+  .release-item {
+    float: left;
+    width: 130px;
+    margin: 3px;
+    background: #eeeeee;
+  }
+
+  .release-item img {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* ОШИБКА: футер почти без стилей, не отделён от контента */
+  #footer {
+    font-size: 10px;
+    color: gray;
+    text-align: center;
+    margin-top: 5px;
+  }
+</style>
+
+</head>
+
+<!-- ОШИБКА: нет атрибута lang -->
+<body>
+
+  <!-- ОШИБКА: header сделан через div без семантики -->
+  <div class="block1">
+
+    <!-- ОШИБКА: навигация через div вместо nav+ul -->
+    <div style="display:flex; align-items:center;">
+
+      <!-- ОШИБКА: логотип — просто span, не ссылка, не img -->
+      <span class="logo-text">SONORA</span>
+
+      <!-- ОШИБКА: ссылки навигации без структуры, инлайн-стили -->
+      <a href="#" style="color:white; margin-right:15px; font-size:13px;">Главная</a>
+      <a href="#" style="color:cyan; margin-right:15px; font-size:13px;">Подборки</a>
+      <a href="#" style="color:white; margin-right:15px; font-size:13px;">Исполнители</a>
+      <!-- ОШИБКА: одна ссылка другого цвета без причины -->
+      <a href="#" style="color:orange; font-size:13px;">Журнал</a>
+
+    </div>
+  </div>
+
+  <!-- ОШИБКА: hero-секция без семантики, картинка через img вместо background -->
+  <div>
+    <img class="big-img"
+      src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=900&q=80"
+      alt=""><!-- ОШИБКА: alt пустой -->
+
+    <!-- ОШИБКА: текст поверх картинки через отрицательный margin -->
+    <div class="hero-text">
+      Открывай новую музыку!!!
+      <!-- ОШИБКА: три восклицательных знака, непрофессионально -->
+    </div>
+
+    <div style="margin-left:20px; margin-top:5px;">
+      <!-- ОШИБКА: описание разорвано br тегами вместо нормального текста -->
+      <p style="font-size:12px; color:#333;">
+        SONORA это место где ты найдешь свежие треки<br>
+        интересных исполнителей<br>
+        на любой случай.
+      </p>
+
+      <!-- ОШИБКА: кнопка — ссылка со смешанными стилями -->
+      <a href="#" class="btn1" style="margin-top:999px;">
+        ▶ Слушать подборки!!!
+      </a>
+    </div>
+  </div>
+
+  <!-- ОШИБКА: горизонтальный разделитель вместо отступов/границ -->
+  <hr color="red" size="5">
+
+  <!-- ===== ПОДБОРКИ ===== -->
+  <!-- ОШИБКА: секция без семантического тега section -->
+  <div class="cards-section">
+
+    <!-- ОШИБКА: заголовок не выделен, теряется -->
+    <h2>ПОДБОРКИ ПО НАСТРОЕНИЮ (НАЖМИ!)</h2>
+
+    <!-- ОШИБКА: каждая карточка — отдельный div без переиспользования классов -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=200&q=80">
+      <!-- ОШИБКА: инлайн-стиль прямо на элементе -->
+      <p style="font-size:14px; font-weight:bold; color:blue;">Ночной город</p>
+      <p>50 треков</p>
+    </div>
+
+    <div class="card" style="margin-top:15px;">
+      <!-- ОШИБКА: margin-top разный у разной карточки — верстка едет -->
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&q=80">
+      <p style="font-size:14px; font-weight:bold; color:red;">Путешествия</p>
+      <p>47 треков</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?w=200&q=80">
+      <!-- ОШИБКА: цвет текста снова другой — нет системы -->
+      <p style="font-size:14px; font-weight:bold; color:green;">Дождь</p>
+      <p>42 трека</p>
+    </div>
+
+    <div class="card" style="margin-top:30px;">
+      <!-- ОШИБКА: margin снова отличается -->
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80">
+      <p style="font-size:14px; font-weight:bold; color:purple;">Уют</p>
+      <p>38 треков</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=200&q=80">
+      <p style="font-size:14px; font-weight:bold; color:orange;">Концентрация</p>
+      <p>55 треков</p>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=200&q=80">
+      <p style="FONT-SIZE:14PX; FONT-WEIGHT:BOLD; COLOR:DARKRED;">Энергия</p>
+      <!-- ОШИБКА: CSS в инлайн-стиле написан КАПСОМ -->
+      <p>49 треков</p>
+    </div>
+
+  </div>
+
+  <br><br><!-- ОШИБКА: отступы через br вместо margin/padding -->
+
+  <!-- ===== НОВЫЕ РЕЛИЗЫ ===== -->
+  <div class="releases">
+
+    <!-- ОШИБКА: заголовок через b вместо h2/h3 -->
+    <b style="font-size:16px;">Новые релизы | Смотреть все →</b>
+    <!-- ОШИБКА: заголовок и ссылка "Смотреть все" склеены в один тег -->
+
+    <br><br>
+
+    <div class="release-item">
+      <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063?w=200&q=80">
+      <p><b>I Know</b></p>
+      <!-- ОШИБКА: вложенный b внутри p вместо класса -->
+      <p style="color:gray; font-size:10px;">The Weeknd</p>
+    </div>
+
+    <div class="release-item">
+      <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=200&q=80">
+      <p><b>End of Beginning</b></p>
+      <p style="color:gray; font-size:10px;">Djo</p>
+    </div>
+
+    <div class="release-item">
+      <img src="https://images.unsplash.com/photo-1490750967868-88df5691cc3e?w=200&q=80">
+      <p><b>Another Life</b></p>
+      <p style="color:gray; font-size:10px;">Rufus Du Sol</p>
+    </div>
+
+    <div class="release-item">
+      <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=200&q=80">
+      <p><b>Escapism.</b></p>
+      <p style="color:gray; font-size:10px;">Raye</p>
+    </div>
+
+    <div class="release-item">
+      <img src="https://images.unsplash.com/photo-1616763355548-1b606f439f86?w=200&q=80">
+      <p><b>Greedy</b></p>
+      <p style="color:gray; font-size:10px;">Tate McRae</p>
+    </div>
+
+    <div class="release-item">
+      <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=200&q=80">
+      <p><b>About You</b></p>
+      <p style="color:gray; font-size:10px;">The 1975</p>
+    </div>
+
+  </div>
+
+  <br><br><br><!-- ОШИБКА: снова br для отступов -->
+
+  <!-- ОШИБКА: footer через div с id вместо тега footer -->
+  <div id="footer">
+
+    <!-- ОШИБКА: логотип в футере — просто текст, не связан с хедером -->
+    <p style="font-size:20px; color:blue;">SONORA</p>
+
+    <!-- ОШИБКА: ссылки футера без структуры, через br -->
+    <a href="#">Главная</a> |
+    <a href="#">Подборки</a> |
+    <a href="#">Исполнители</a> |
+    <a href="#">Журнал</a>
+
+    <br>
+
+    <!-- ОШИБКА: иконки соцсетей — просто эмодзи -->
+    🎵 🎧 📱 📺
+
+    <br>
+    <!-- ОШИБКА: копирайт в другом месте и другим размером шрифта -->
+    <p style="font-size:8px;">© 2019 SONORA все права защищены bla bla bla</p>
+
+  </div>
+
+</body>
+</html>
